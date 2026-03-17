@@ -1,0 +1,7 @@
+Vulnerabilites liees au manifeste
+-------------------------
+Application debuggable : true
+Risque : permet le debugging et le reverse engineering de l'application
+-------------------------
+allowBackup active : true
+Risque : les donnees de l'application peuvent etre extraites via adb backup

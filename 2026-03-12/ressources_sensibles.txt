@@ -1,0 +1,15 @@
+Ressources sensibles :
+--------------------
+
+Analyse des fichiers (section Files de MobSF) :
+
+- Aucun fichier de base de données (.db) n’a été trouvé.
+- Aucun fichier de configuration sensible (.json, .properties) contenant des informations critiques n’a été identifié.
+- Aucun fichier shared_prefs contenant des données sensibles n’a été détecté.
+- Aucun token, mot de passe ou clé API n’a été trouvé dans les ressources.
+- Aucun fichier dans le dossier assets ne contient d’informations sensibles.
+
+Conclusion :
+
+L’application ne contient pas de ressources sensibles exposées dans ses fichiers. 
+Cela réduit le risque de fuite de données via l’analyse statique des ressources.

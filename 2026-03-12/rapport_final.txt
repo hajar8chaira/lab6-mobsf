@@ -1,0 +1,113 @@
+RAPPORT D'AUDIT DE SECURITE - APPLICATION ANDROID
+
+1. Informations Générales
+-------------------------
+Nom de l'application : PizzaRecipes
+Date d'analyse : 2026-03-12
+Analyste : Mobexler
+Outil utilisé : MobSF
+Type d'analyse : Analyse statique (SAST)
+Hash SHA-256 : Non disponible
+
+--------------------------------------------------
+
+2. Résumé Exécutif
+------------------
+L’analyse statique de l’application révèle un niveau de risque global élevé.
+
+Plusieurs vulnérabilités critiques ont été identifiées, notamment l’activation du mode debug, l’utilisation d’un certificat de signature non sécurisé, ainsi que le support de versions Android vulnérables.
+
+Ces failles peuvent permettre à un attaquant de compromettre l’application, d’extraire des données sensibles ou de faciliter le reverse engineering.
+
+--------------------------------------------------
+
+3. Top Vulnérabilités
+---------------------
+
+[HIGH] 1. Debug activé (android:debuggable=true)
+Localisation : BuildConfig.java
+Description : L’application est compilée en mode debug.
+Impact :
+- Reverse engineering facilité
+- Accès aux logs internes
+- Possibilité de debugger l’application
+Recommandation :
+Désactiver android:debuggable en production.
+
+--------------------------------------------------
+
+[HIGH] 2. Application signée avec certificat debug
+Description : L’application utilise un certificat de debug.
+Impact :
+- Application modifiable
+- Risque de compromission
+Recommandation :
+Signer l’application avec un certificat de production.
+
+--------------------------------------------------
+
+[HIGH] 3. Utilisation de SHA1
+Description : Algorithme de signature faible.
+Impact :
+- Vulnérabilité aux collisions
+Recommandation :
+Utiliser SHA-256.
+
+--------------------------------------------------
+
+[HIGH] 4. minSdkVersion faible (Android 4.2)
+Description : Support d’anciennes versions Android vulnérables.
+Impact :
+- Exposition à des failles connues
+Recommandation :
+Augmenter minSdkVersion à 29 ou plus.
+
+--------------------------------------------------
+
+[WARNING] 5. allowBackup=true
+Description : Sauvegarde des données activée.
+Impact :
+- Extraction des données via ADB
+Recommandation :
+Désactiver allowBackup.
+
+--------------------------------------------------
+
+4. Recommandations Priorisées
+-----------------------------
+1. Désactiver le mode debug
+2. Signer avec un certificat sécurisé
+3. Augmenter la version Android minimale
+4. Désactiver allowBackup
+5. Utiliser SHA-256
+
+--------------------------------------------------
+
+5. Faux Positifs Potentiels
+---------------------------
+Janus vulnerability :
+Peut ne pas être applicable si l’application cible Android 8 ou supérieur.
+
+--------------------------------------------------
+
+6. Annexes Techniques
+---------------------
+
+Permissions :
+Aucune permission critique détectée
+
+Composants exportés :
+Aucun composant critique détecté
+
+Fichiers impactés :
+BuildConfig.java
+
+--------------------------------------------------
+
+7. Conclusion
+-------------
+L’application présente plusieurs vulnérabilités critiques liées à la configuration et à la sécurité.
+
+Ces problèmes doivent être corrigés avant mise en production afin de réduire les risques de compromission et d’attaque.
+
+--------------------------------------------------

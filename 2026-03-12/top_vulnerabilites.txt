@@ -1,0 +1,36 @@
+Top vulnérabilités :
+------------------
+
+[HIGH] Debug activé (android:debuggable=true)
+Risque : reverse engineering, accès aux logs, exploitation facilitée
+Impact : très élevé
+Correction : désactiver en production
+
+[HIGH] Application signée avec certificat debug
+Risque : application modifiable, non sécurisée
+Impact : élevé
+Correction : utiliser un certificat release
+
+[HIGH] Algorithme SHA1 utilisé
+Risque : collision hash
+Impact : moyen à élevé
+Correction : utiliser SHA-256
+
+[HIGH] minSdkVersion trop faible (Android 4.2)
+Risque : OS vulnérables non patchés
+Impact : élevé
+Correction : minSdk >= 29
+
+[WARNING] allowBackup=true
+Risque : extraction des données via ADB
+Impact : moyen
+Correction : désactiver allowBackup
+
+[WARNING] Janus vulnerability (signature v1)
+Risque : injection APK
+Impact : moyen
+Correction : utiliser signature v2/v3 uniquement
+
+Faux positifs potentiels :
+-------------------------
+- Janus vulnerability : dépend de la version Android cible

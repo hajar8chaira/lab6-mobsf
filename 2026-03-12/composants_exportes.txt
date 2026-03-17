@@ -1,0 +1,9 @@
+Composants exportes :
+--------------------------
+Aucun composant avec android:exported="true" detecte.
+
+Activites trouvees :
+------------------
+SplashActivity (activite principale)
+MainActivity
+DetailsActivity

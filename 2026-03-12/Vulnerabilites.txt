@@ -1,0 +1,47 @@
+Vulnérabilités critiques :
+------------------------
+
+1. Debug configuration enabled (High)
+
+Description :
+L'application est compilée avec android:debuggable=true, ce qui permet l'attachement d'un debugger et l'analyse dynamique du code.
+
+Risque :
+- Reverse engineering facilité
+- Inspection de la mémoire de l'application
+- Modification du comportement à l'exécution
+- Contournement des mécanismes de sécurité
+
+Recommandations (OWASP MSTG - Anti-Tampering & Reverse Engineering) :
+
+- Désactiver le mode debug en production :
+  android:debuggable="false"
+
+- Activer l'obfuscation du code avec ProGuard ou R8 :
+  → Rend le code difficile à comprendre après décompilation
+
+- Implémenter des mécanismes anti-debugging :
+  → Détecter si un debugger est attaché (Debug.isDebuggerConnected())
+
+- Implémenter des protections anti-tampering :
+  → Vérification de l'intégrité de l'application (signature check, checksum)
+
+- Utiliser des techniques d'anti-reverse engineering :
+  → Code obfuscation avancée
+  → Renforcement du code (code hardening)
+
+- Éviter l'exposition des logs sensibles en mode debug
+
+--------------------------------------------------
+
+Hardcoded Secrets :
+Aucun secret détecté (API keys, tokens, credentials)
+
+--------------------------------------------------
+
+Résumé de l'analyse du code :
+
+- 1 vulnérabilité critique identifiée (Debug activé)
+- Aucun stockage de données sensibles détecté
+- Aucun endpoint critique exposé
+- Application globalement simple avec faible surface d'attaque

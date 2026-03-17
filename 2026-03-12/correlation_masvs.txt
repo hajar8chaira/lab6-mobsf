@@ -1,0 +1,53 @@
+Corrélation MASVS :
+-----------------
+
+Vulnérabilité : Application debuggable activée
+
+Référence MASVS : MSTG-RESILIENCE-1
+
+Description :
+L'application doit implémenter des mécanismes pour résister aux attaques de reverse engineering et de manipulation (tampering).
+
+Preuve :
+Présence de android:debuggable="true" dans le fichier AndroidManifest.xml.
+
+Impact :
+Un attaquant peut attacher un debugger, analyser le comportement de l'application et modifier son fonctionnement.
+
+--------------------------------------------------
+
+Vulnérabilité : Backup activé
+
+Référence MASVS : MSTG-STORAGE-1
+
+Description :
+Les données sensibles doivent être stockées de manière sécurisée et protégées contre les accès non autorisés.
+
+Preuve :
+Présence de android:allowBackup="true" dans le fichier AndroidManifest.xml.
+
+Impact :
+Les données de l'application peuvent être extraites via ADB backup, ce qui peut entraîner une fuite d'informations.
+
+--------------------------------------------------
+
+Tests MASTG complémentaires :
+---------------------------
+
+Test : MASTG-TEST-RESILIENCE-1
+
+Description :
+Tester la résistance de l'application au reverse engineering et au debugging.
+
+Objectif :
+Vérifier si l'application détecte ou empêche l'utilisation d'outils comme un debugger.
+
+--------------------------------------------------
+
+Test : MASTG-TEST-STORAGE-1
+
+Description :
+Analyser le stockage local de l'application pour identifier les données sensibles.
+
+Objectif :
+Vérifier si les données sont protégées et non accessibles via des mécanismes comme le backup Android.

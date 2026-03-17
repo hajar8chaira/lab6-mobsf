@@ -1,0 +1,7 @@
+Configuration reseau >
+-------------------------
+-------------------------
+usesCleartextTraffic : absent
+networkSecurityConfig : absent
+Endpoints identifies >
+-------------------------

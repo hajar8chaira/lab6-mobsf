@@ -1,0 +1,7 @@
+Permissions dangereuses :
+------------------------
+Aucune permission dangereuse detectee dans AndroidManifest.xml
+
+Permissions normales :
+------------------------
+Aucune permission declaree dans l'application
